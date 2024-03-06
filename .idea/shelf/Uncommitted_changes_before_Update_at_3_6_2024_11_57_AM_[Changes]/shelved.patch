@@ -1,0 +1,18 @@
+Index: config.ini
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[DEFAULT]\r\n; do not change these values\r\nVersion = 2.x.x\r\nchromedriver_latest = https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE\r\nchromedriver_mirror = https://storage.googleapis.com/chrome-for-testing-public/\r\nStreamer = https://www.twitch.tv/popout/Twitch/chat\r\noutput_dir = C:\\Users\\Public\\Pictures\\\r\ndelay_init = 15\r\ndelay_screenshots = 2\r\n\r\n[TWITCH_SETTINGS]\r\n; must be full url path to streamers CHAT\r\n;Streamer =\r\n\r\n[SCRAPER_SETTINGS]\r\n; output directory where screenshots are saved (uncomment when set)\r\n; output_dir = C:\\your\\path\\here\\\r\n; delay(in seconds) between taking screen shots\r\n; delay_screenshots = 2\r\n; delay(in seconds) between initially connecting to stream and taking first action. 15 is found to be a safe default.\r\n; delay_init = 15\r\n\r\n\r\n[UPDATER_SETTINGS]\r\n;uncomment and add correct values if the chromedriver ever changes homes before a new release is published.\r\n;chromedriver_latest\r\n;chromedriver_mirror\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config.ini b/config.ini
+--- a/config.ini	(revision 75e0e6d3cc538166c66d7dae66b430859eecd0ec)
++++ b/config.ini	(date 1709741220923)
+@@ -3,6 +3,7 @@
+ Version = 2.x.x
+ chromedriver_latest = https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE
+ chromedriver_mirror = https://storage.googleapis.com/chrome-for-testing-public/
++chromedriver_version = https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions.json
+ Streamer = https://www.twitch.tv/popout/Twitch/chat
+ output_dir = C:\Users\Public\Pictures\
+ delay_init = 15
