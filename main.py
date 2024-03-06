@@ -18,16 +18,24 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime
 
-#lets set the defaults
-#ini loading
-config = configparser.ConfigParser()
-config.read('config.ini')
-update_conf = config['UPDATER_SETTINGS']
-
-
-
 #log init
 logging.basicConfig(filename='error.log',encoding='utf-8',filemode='a',level=logging.INFO,format='%(asctime)s: %(levelname)s -> %(message)s')
+#lets set the defaults
+#ini loading
+try:
+    if(os.path.isfile('config.ini')):
+        config = configparser.ConfigParser()
+        config.read('config.ini')
+        update_conf = config['UPDATER_SETTINGS']
+    else:
+        logging.critical('INI file is not detected. Please download it at https://github.com/Skrillbill/Twitch_LeaderBoardScraper/blob/master/config.ini')
+except NameError as err:
+    logging.critical(f'Variable Error: {err}')
+except Exception as err:
+    logging.critical(f'Something went wrong: {err}')
+
+
+
 
 def update_redux():
     current_version = "0"
@@ -99,7 +107,6 @@ def scraper():
         driver.get_screenshot_as_file(str(config['SCRAPER_SETTINGS']['output_dir']) + gifters)
         logging.info(str(config['SCRAPER_SETTINGS']['output_dir']) + gifters)
 
-        time.sleep(screenshot_delay)
         driver.quit()
 
     except Exception as err:
@@ -109,12 +116,12 @@ def scraper():
 
 
 def main() -> NoReturn:
-    if(os.path.isfile('config.ini')):
-        logging.info('Program was initialized')
-        update_redux()
-        scraper()
-    else:
-        logging.critical('config.ini does not exist. Download it from https://github.com/Skrillbill/Twitch_LeaderBoardScraper')
+    logging.info('Program was initialized')
+    update_redux()
+    scraper()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as err:
+        logging.critical(f'Something unexpected happened:  {err}')
