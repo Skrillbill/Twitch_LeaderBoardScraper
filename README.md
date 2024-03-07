@@ -23,6 +23,6 @@ in any way. Instead we use the Chromedriver library (https://chromedriver.chromi
 Each time tool is run, it will log all actions to the error.log in the same directory as the tool. If your screenshots <br> 
 are not being saved or it seems as if it is not doing anything, check the error.log for details. 
 
-The most common error is not having the conifg.ini in the same directory as the tool exe. The tool will not <br> 
+The most common error is not having the config.ini in the same directory as the tool exe. The tool will not <br> 
 function without the ini file present. 
 
