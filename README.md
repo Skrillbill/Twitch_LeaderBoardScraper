@@ -2,7 +2,7 @@
 ### Version 2.0.0
 
 ## Uses:
-For archival uses. Tool will open the configured twitch channels chat popout in a browser window, expands the <br>
+For archival uses. Tool will open the configured twitch channels' chat in a browser window, expands the <br>
 leaderboards for both Bits and Gifts/gifted subs and takes a screenshot of each. Does not use the Twitch API <br> 
 in any way. Instead we use the Chromedriver library (https://chromedriver.chromium.org/). 
 
