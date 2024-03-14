@@ -15,7 +15,7 @@ in any way. Instead we use the Chromedriver library (https://chromedriver.chromi
 ## How to use it
 1. Download the exe from ***dist***  and grab the ***conifg.ini*** from repo. <br>
 2. Add your desired twitch stream to the *TWITCH_SETTINGS* section of the conifg.ini file. <br> (example: https://www.twitch.tv/popout/yourchannelhere/chat)
-3. Change *output_dir* under *SCRAPER_SETTINGS*
+3. Change *output_dir* under *SCRAPER_SETTINGS* (make sure to put a \ at the end of your path!)
 
 
 
