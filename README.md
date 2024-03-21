@@ -13,9 +13,11 @@ in any way. Instead we use the Chromedriver library (https://chromedriver.chromi
 
 
 ## How to use it
-1. Download the exe from ***dist***  and grab the ***conifg.ini*** from repo. <br>
-2. Add your desired twitch stream to the *TWITCH_SETTINGS* section of the conifg.ini file. <br> (example: https://www.twitch.tv/popout/yourchannelhere/chat)
-3. Change *output_dir* under *SCRAPER_SETTINGS* (make sure to put a \ at the end of your path!)
+1. Download the ***TwitchBitScraper_v2.0.1.zip*** from Releases. <br>
+2. Unzip to desired location(it is recommended to override existing version of conifg.ini in this release due to additional options being added). 
+3. Add your desired twitch stream to the *TWITCH_SETTINGS* section of the conifg.ini file. <br> (example: https://www.twitch.tv/popout/yourchannelhere/chat)
+4. Change *output_dir* under *SCRAPER_SETTINGS* (make sure to put a \ at the end of your path!)
+5. (Optional) Change show_popup to True in config.ini if you wish to see a popup each time tool is run. 
 
 
 
