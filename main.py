@@ -17,6 +17,8 @@ import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime
+import tkinter as tk
+from tkinter import messagebox
 
 #log init
 logging.basicConfig(filename='error.log',encoding='utf-8',filemode='a',level=logging.INFO,format='%(asctime)s: %(levelname)s -> %(message)s')
@@ -27,6 +29,7 @@ try:
         config = configparser.ConfigParser()
         config.read('config.ini')
         update_conf = config['UPDATER_SETTINGS']
+
     else:
         logging.critical('INI file is not detected. Please download it at https://github.com/Skrillbill/Twitch_LeaderBoardScraper/blob/master/config.ini')
 except NameError as err:
@@ -64,7 +67,18 @@ def update_redux():
 
         logging.info(f'Chromedriver has been updated to {new_version}')
 
+
+def popup_window(message):
+    root = tk.Tk()
+    root.withdraw() #so we don't display the full GUI; we only need message box
+    messagebox.showinfo("Twitch Scraper Notification", message)
+    root.destroy()
+
+
+
 def scraper():
+    status_state = "Fail"
+    watchdog_popup = bool(config['SCRAPER_SETTINGS']['show_popup'])
     # create our headless chrome instance and load the chat page
     stream_url = config['TWITCH_SETTINGS']['Streamer']
     chrome_options = webdriver.ChromeOptions()
@@ -107,18 +121,24 @@ def scraper():
         driver.get_screenshot_as_file(str(config['SCRAPER_SETTINGS']['output_dir']) + gifters)
         logging.info(str(config['SCRAPER_SETTINGS']['output_dir']) + gifters)
 
+
         driver.quit()
+        status_state = 'Success'
 
     except Exception as err:
         logging.critical('Something went wrong.. try again or open a ticket at https://github.com/Skrillbill/Twitch_LeaderBoardScraper')
         logging.critical('%s',err)
 
-
+    finally:
+        logging.info('Script Execution finished. Status: %s', status_state)
+        if (watchdog_popup == True):
+            popup_window(f'Execution was a {status_state}.')
 
 def main() -> NoReturn:
     logging.info('Program was initialized')
     update_redux()
     scraper()
+
 
 if __name__ == "__main__":
     try:
