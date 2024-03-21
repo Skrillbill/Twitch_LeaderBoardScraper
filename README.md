@@ -26,6 +26,6 @@ are not being saved or it seems as if it is not doing anything, check the error.
 The most common error is not having the config.ini in the same directory as the tool exe. The tool will not <br> 
 function without the ini file present. 
 
-##Error Messages
+## Error Messages
 "Message: session not created: This version of ChromeDriver only supports Chrome version 123" - This means your chrome browser is out of update. Please update your browser and try again (this tool does not invoke chrome browser updates). 
 
