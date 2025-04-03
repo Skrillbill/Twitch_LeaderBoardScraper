@@ -1,5 +1,5 @@
 # Twitch Leaderboard Scraper
-### Version 2.0.0
+### Version 2.0.1
 
 ## Uses:
 For archival uses. Tool will open the configured twitch channels' chat in a browser window, expands the <br>
