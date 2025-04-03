@@ -129,12 +129,12 @@ def scraper():
     except NoSuchElementException as e:
         logging.critical('Button does not exist. (most common cause is no subs or bits at start of month) : ')
         logging.critical('%s',e)
-        popup_window('NoSuchElement')
+
 
     except WebDriverException as e:
         logging.critical('WebDriver error: ')
         logging.critical('%s', e)
-        popup_window('WebDriverTorsoException')
+
 
     except Exception as err:
         logging.critical('Something went wrong.. try again or open a ticket at https://github.com/Skrillbill/Twitch_LeaderBoardScraper')
