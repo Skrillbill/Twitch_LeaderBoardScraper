@@ -15,6 +15,7 @@ import logging
 import time
 import json
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException , WebDriverException
 from selenium.webdriver.chrome.service import Service
 from datetime import datetime
 import tkinter as tk
@@ -121,9 +122,19 @@ def scraper():
         driver.get_screenshot_as_file(str(config['SCRAPER_SETTINGS']['output_dir']) + gifters)
         logging.info(str(config['SCRAPER_SETTINGS']['output_dir']) + gifters)
 
-
         driver.quit()
         status_state = 'Success'
+
+
+    except NoSuchElementException as e:
+        logging.critical('Button does not exist. (most common cause is no subs or bits at start of month) : ')
+        logging.critical('%s',e)
+        popup_window('NoSuchElement')
+
+    except WebDriverException as e:
+        logging.critical('WebDriver error: ')
+        logging.critical('%s', e)
+        popup_window('WebDriverTorsoException')
 
     except Exception as err:
         logging.critical('Something went wrong.. try again or open a ticket at https://github.com/Skrillbill/Twitch_LeaderBoardScraper')
@@ -133,6 +144,8 @@ def scraper():
         logging.info('Script Execution finished. Status: %s', status_state)
         if (watchdog_popup == True):
             popup_window(f'Execution was a {status_state}.')
+
+
 
 def main() -> NoReturn:
     logging.info('Program was initialized')
