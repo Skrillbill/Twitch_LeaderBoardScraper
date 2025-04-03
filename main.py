@@ -1,6 +1,6 @@
 '''
 Leaderboard Scraper
-Version 2.x.x
+Version 2.0.2
 SkrillBill
 https://github.com/SkrillBill
 '''
