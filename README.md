@@ -38,8 +38,7 @@ delay_screenshots         = Delay between screenshots (seconds)
 
 ### [TWITCH_SETTINGS]
 ```
-Streamer                  = Full Twitch chat popout URL for the desired streamer. If not specified, 
-                              the default value is used. 
+Streamer                  = Full Twitch chat popout URL for the desired streamer. If not specified, the default value is used. 
 ```
 
 ### [SCRAPER_SETTINGS]
