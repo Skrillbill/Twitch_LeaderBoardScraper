@@ -14,17 +14,17 @@ https://chromedriver.chromium.org/
 - Written in Python, distributed as a standalone .exe for easy use
 
 ## How to Use It
-1. Download the **TwitchBitScraper_v2.0.1.zip** file from the Releases section.
+1. Download the **TwitchBitScraper_v3.0.1.zip** file from the Releases section.
 2. Unzip to a desired location. It’s recommended you override the existing `config.ini` with the new one included.
-3. Add the Twitch streamer's chat URL to the `[TWITCH_SETTINGS]` section of `config.ini`.  
-   Example: `https://www.twitch.tv/popout/yourchannelhere/chat`
-4. Change the `output_dir` value in the `[SCRAPER_SETTINGS]` section to where you want screenshots saved.  
-   (Make sure the path ends with a backslash: `C:\Path\To\Screenshots\`)
-5. Optional: Set `show_popup = True` in `config.ini` if you want a popup after the tool runs.
+3. Uncomment any options / make any changes to config.ini(see below for full config.ini reference).
+
 
 ## Config.ini Options Explained
 
+
 ### [DEFAULT]
+These values should not be changed directly. Uncomment the options you want to change under TWITCH_SETTINGS or
+SCRAPPER_SETTINGS. 
 ```
 Version                   = Internal version reference
 chromedriver_latest       = Endpoint for latest stable release tag
