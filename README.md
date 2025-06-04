@@ -1,5 +1,5 @@
 # Twitch Leaderboard Scraper
-Version 2.0.1
+Version 3.0.0
 
 ## Uses
 For archival purposes. This tool opens the configured Twitch channel’s chat in a browser window, expands the
@@ -14,7 +14,7 @@ https://chromedriver.chromium.org/
 - Written in Python, distributed as a standalone .exe for easy use
 
 ## How to Use It
-1. Download the **TwitchBitScraper_v3.0.1.zip** file from the Releases section.
+1. Download the **TwitchBitScraper_v3.0.0.zip** file from the Releases section.
 2. Unzip to a desired location. It’s recommended you override the existing `config.ini` with the new one included.
 3. Uncomment any options / make any changes to config.ini(see below for full config.ini reference).
 
