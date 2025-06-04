@@ -19,7 +19,7 @@ https://chromedriver.chromium.org/
 3. Uncomment any options / make any changes to config.ini(see below for full config.ini reference).
 
 
-## Config.ini Options Explained
+## Config.ini Options 
 
 
 ### [DEFAULT]
