@@ -14,7 +14,7 @@ https://chromedriver.chromium.org/
 - Written in Python, distributed as a standalone .exe for easy use
 
 ## How to Use It
-1. Download the **TwitchBitScraper_v3.0.0.zip** file from the Releases section.
+1. [Download the Latest Release](https://github.com/YourUsername/YourRepoName/releases/latest)
 2. Unzip to a desired location. It’s recommended you override the existing `config.ini` with the new one included.
 3. Uncomment any options / make any changes to config.ini(see below for full config.ini reference).
 
