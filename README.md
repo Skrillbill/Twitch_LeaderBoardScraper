@@ -19,15 +19,70 @@ in any way. Instead we use the Chromedriver library (https://chromedriver.chromi
 4. Change *output_dir* under *SCRAPER_SETTINGS* (make sure to put a \ at the end of your path!)
 5. (Optional) Change show_popup to True in config.ini if you wish to see a popup each time tool is run. 
 
+## Config.ini options explained
 
+# 🛠️ `config.ini` Reference
 
-## Troubleshooting
-Each time tool is run, it will log all actions to the error.log in the same directory as the tool. If your screenshots <br> 
-are not being saved or it seems as if it is not doing anything, check the error.log for details. 
+This file controls behavior of the Twitch Leaderboard Scraper. Below is a detailed explanation of each section and its options.
 
-The most common error is not having the config.ini in the same directory as the tool exe. The tool will not <br> 
-function without the ini file present. 
+---
 
-## Error Messages
-"Message: session not created: This version of ChromeDriver only supports Chrome version 123" - This means your chrome browser is out of update. Please update your browser and try again (this tool does not invoke chrome browser updates). 
+## `[DEFAULT]`
+These values are used internally for updating and startup logic. Do **not** modify unless you understand the update mechanisms.
 
+| Key | Description |
+|-----|-------------|
+| `Version` | Current script version string. Used for internal reference. |
+| `chromedriver_latest` | URL pointing to Google's latest stable ChromeDriver version tag. |
+| `chromedriver_mirror` | Base path to the mirror for ChromeDriver ZIPs (used during updates). |
+| `chromedriver_version` | JSON endpoint for querying latest known-good versions of ChromeDriver. |
+| `Streamer` | Default Twitch chat popout URL (used if not overridden in `[TWITCH_SETTINGS]`). |
+| `output_dir` | Path to save screenshots. Defaults to a public pictures folder. |
+| `delay_init` | Delay (in seconds) after browser launch before performing first action. |
+| `delay_screenshots` | Delay (in seconds) between screenshots and rotate actions. |
+
+---
+
+## `[TWITCH_SETTINGS]`
+Used to override the stream chat popout URL.
+
+| Key | Description |
+|-----|-------------|
+| `Streamer` | (Optional) Full URL to the Twitch chat popout for a specific streamer. If unset, the default is used. Example: `https://www.twitch.tv/popout/streamername/chat` |
+
+---
+
+## `[SCRAPER_SETTINGS]`
+Controls scraping behavior, XPath definitions, and screenshot preferences.
+
+| Key | Description |
+|-----|-------------|
+| `output_dir` | (Optional) Override the screenshot save path here. |
+| `delay_screenshots` | Time (in seconds) to wait between screenshots and navigation steps. |
+| `delay_init` | Time to wait after loading the page before taking any actions. Allows Twitch to finish rendering. |
+| `show_popup` | Whether to show a desktop popup window on script success/failure. Set to `True` or `False`. |
+| `enable_topclips` | Set to `True` to capture the “Monthly Top Clips” leaderboard. |
+| `title_cheers` | Expected title string for the Cheerers leaderboard. Used for matching during rotation. |
+| `title_gifters` | Expected title string for the Gifters leaderboard. |
+| `title_clips` | Expected title string for the Top Clips leaderboard. |
+
+### XPath Fields
+Used by Selenium to locate elements on the Twitch chat popout page. These may change if Twitch updates its layout.
+
+| Key | Description |
+|-----|-------------|
+| `leaderboard_title_xpath` | XPath to the currently displayed leaderboard title (used for comparison). |
+| `expand_leaderboard_button_xpath` | XPath for the standard “expand leaderboard” button. |
+| `rotate_leaderboard_button_xpath` | XPath to the button that rotates between leaderboards (e.g., Gifters → Cheerers → Clips). |
+| `twitch_message_popup_xpath` | XPath to Twitch’s in-window popup (e.g., mod messages). If present, the alternate expand method is used. |
+| `alt_expand_leaderboard_button_xpath` | Fallback XPath to be used for expanding leaderboard when the popup blocks the default button. |
+
+---
+
+## `[UPDATER_SETTINGS]`
+Advanced configuration for the built-in ChromeDriver updater. Normally these mirror the `[DEFAULT]` values.
+
+| Key | Description |
+|-----|-------------|
+| `chromedriver_latest` | (Optional) Override the default latest version tag URL. |
+| `chromedriver_mirror` | (Optional) Override the ChromeDriver download base URL. |
